@@ -1,4 +1,4 @@
-'use client';
+"use client"
 
 import { useState, useEffect } from 'react';
 import CircularGallery from '../CircularGallery';
@@ -36,7 +36,7 @@ export default function About() {
     }, [displayText, isDeleting, currentRoleIndex]);
 
     return (
-        <section id="about" className="py-24 lg:py-32 bg-white">
+        <section id="about" className="py-20 lg:py-32 bg-white">
             <div className="max-w-6xl mx-auto px-6">
                 {/* Section Header */}
                 <div className="flex items-center gap-4 mb-10">
@@ -75,7 +75,7 @@ export default function About() {
                                 <span className="animate-pulse">|</span>
                             </span>
                             <br />
-                            <span className="text-gray-600">who loves creating</span>
+                            <span className="text-gray-600">Designing interfaces, developing experiences</span>
                         </h2>
 
                         <div className="space-y-4">
