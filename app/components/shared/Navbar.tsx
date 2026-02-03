@@ -1,11 +1,8 @@
 "use client";
 
 import { useState, useEffect } from "react";
-
-type NavLink = {
-    name: string;
-    href: string;
-};
+import { navLinks } from '@/datadummy';
+import { Link } from "lucide-react";
 
 export default function Navbar() {
     const [isScrolled, setIsScrolled] = useState<boolean>(false);
@@ -16,28 +13,23 @@ export default function Navbar() {
         window.addEventListener("scroll", onScroll);
         return () => window.removeEventListener("scroll", onScroll);
     }, []);
-
-    const links: NavLink[] = [
-        { name: "Home", href: "#home" },
-        { name: "About", href: "#about" },
-        { name: "Projects", href: "#projects" },
-        { name: "Skills", href: "#skills" },
-        { name: "Contact", href: "#contact" },
-    ];
     return (
-        <nav
-            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-white/80 backdrop-blur-lg shadow-sm' : ''
-                }`}
-        >
-            <div className="max-w-6xl mx-auto px-6 flex items-center justify-between h-16 sm:h-20">
+        <nav className="fixed top-0 left-0 right-0 z-50 pt-4 px-6">
+            {/* Desktop Navbar - Content Width Only */}
+            <div
+                className={`hidden md:flex max-w-6xl mx-auto items-center justify-between px-6 py-3 rounded-full transition-all duration-300 ${isScrolled
+                    ? 'bg-white/90 backdrop-blur-lg shadow-lg border border-pink-100'
+                    : 'bg-white/70 backdrop-blur-sm border border-pink-50'
+                    }`}
+            >
                 {/* Logo */}
                 <a href="#home" className="text-lg text-gray-800 font-medium tracking-tight">
                     Kirani<span className="text-[#ec4899]">.</span>
                 </a>
 
-                {/* Desktop Nav */}
-                <div className="hidden md:flex items-center gap-10">
-                    {links.map((link) => (
+                {/* Desktop Nav Links */}
+                <div className="flex items-center gap-8">
+                    {navLinks.map((link) => (
                         <a
                             key={link.name}
                             href={link.href}
@@ -48,17 +40,30 @@ export default function Navbar() {
                     ))}
                 </div>
 
-                {/* CV */}
+                {/* CV Button */}
                 <a
-                    href="#contact"
-                    className="hidden md:inline-flex items-center gap-2 px-5 py-2.5 text-sm font-medium bg-[#ec4899] text-white rounded-full hover:bg-[#ec4899] transition-all hover:-translate-y-0.5 shadow-lg shadow-pink-200"
+                    href="/contact"
+                    className="inline-flex items-center gap-2 px-5 py-2 text-sm font-medium bg-[#ec4899] text-white rounded-full hover:bg-pink-600 transition-all hover:-translate-y-0.5 shadow-lg shadow-pink-200"
                 >
                     Download CV
+                </a>
+            </div>
+
+            {/* Mobile Navbar */}
+            <div
+                className={`md:hidden flex items-center justify-between px-4 py-3 rounded-2xl transition-all duration-300 ${isScrolled
+                    ? 'bg-white/90 backdrop-blur-lg shadow-lg border border-pink-100'
+                    : 'bg-white/70 backdrop-blur-sm border border-pink-50'
+                    }`}
+            >
+                {/* Logo */}
+                <a href="/" className="text-lg text-gray-800 font-medium tracking-tight">
+                    Kirani<span className="text-[#ec4899]">.</span>
                 </a>
 
                 {/* Mobile Toggle */}
                 <button
-                    className="md:hidden w-8 h-8 flex flex-col items-center justify-center gap-1.5"
+                    className="w-8 h-8 flex flex-col items-center justify-center gap-1.5"
                     onClick={() => setIsMobileOpen(!isMobileOpen)}
                     aria-label="Menu"
                 >
@@ -74,7 +79,7 @@ export default function Navbar() {
                     }`}
             >
                 <div className="max-w-6xl mx-auto px-6 py-6 flex flex-col gap-3">
-                    {links.map((link) => (
+                    {navLinks.map((link) => (
                         <a
                             key={link.name}
                             href={link.href}
@@ -88,7 +93,7 @@ export default function Navbar() {
 
                     <div className="pt-4 border-t border-pink-100">
                         <a
-                            href="#contact"
+                            href="/contact"
                             className="flex items-center justify-center w-full gap-2 px-6 py-3 text-sm font-semibold bg-[#ec4899] text-white rounded-full shadow-lg shadow-pink-200 active:scale-95 transition"
                             onClick={() => setIsMobileOpen(false)}
                         >

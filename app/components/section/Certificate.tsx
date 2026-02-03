@@ -1,14 +1,7 @@
 'use client';
 
 import { useState, useRef, MouseEvent, TouchEvent } from 'react';
-
-interface Certificate {
-    title: string;
-    issuer: string;
-    date: string;
-    image: string;
-    credentialUrl: string;
-}
+import { certificates } from '@/datadummy';
 
 export default function Certificates() {
     const [isDragging, setIsDragging] = useState<boolean>(false);
@@ -56,37 +49,6 @@ export default function Certificates() {
             behavior: 'smooth'
         });
     };
-
-    const certificates: Certificate[] = [
-        {
-            title: 'React Developer Certificate',
-            issuer: 'Dicoding Indonesia',
-            date: '2024',
-            image: '/avatar.png',
-            credentialUrl: '#',
-        },
-        {
-            title: 'UI/UX Design Fundamentals',
-            issuer: 'Google',
-            date: '2024',
-            image: '/avatar.png',
-            credentialUrl: '#',
-        },
-        {
-            title: 'Frontend Web Development',
-            issuer: 'Coursera',
-            date: '2023',
-            image: '/avatar.png',
-            credentialUrl: '#',
-        },
-        {
-            title: 'JavaScript Algorithms',
-            issuer: 'freeCodeCamp',
-            date: '2023',
-            image: '/avatar.png',
-            credentialUrl: '#',
-        },
-    ];
 
     return (
         <section id="certificates" className="py-24 lg:py-32 bg-[#fdf2f8]">

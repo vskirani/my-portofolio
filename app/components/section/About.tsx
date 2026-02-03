@@ -49,7 +49,7 @@ export default function About() {
 
                 <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
 
-                    {/* Circular Gallery - Appears FIRST on mobile */}
+                    {/* Gambar */}
                     <div className="h-[350px] sm:h-[400px] lg:h-[500px] w-full order-1 rounded-2xl overflow-hidden">
                         <CircularGallery
                             items={[
@@ -83,7 +83,7 @@ export default function About() {
                                 Halo! Aku Vitri Septia Kirani, seorang Frontend Developer dan UI/UX Designer yang tertarik membangun pengalaman digital yang nyaman dan mudah digunakan.
                             </p>
                             <p className="text-gray-500">
-                                Saat ini aku aktif merancang tampilan yang user-friendly lalu mengubahnya menjadi website responsif menggunakan React dan teknologi frontend modern. Melalui berbagai project freelance dan kampus, aku sudah mengerjakan aplikasi nyata mulai dari sistem bisnis, platform edukasi, hingga aplikasi berbasis AI.
+                                Saat ini aku aktif merancang tampilan yang user-friendly lalu mengubahnya menjadi website responsif menggunakan teknologi frontend modern. Melalui berbagai project freelance dan kampus, aku sudah mengerjakan aplikasi nyata mulai dari sistem bisnis, platform edukasi, hingga aplikasi berbasis AI.
                             </p>
                         </div>
 

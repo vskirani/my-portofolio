@@ -1,27 +1,9 @@
+import Link from 'next/link';
+import { projects, Project } from '@/datadummy/projects';
+
 export default function Projects() {
-    const projects = [
-        {
-            id: 1,
-            image: '/foto.png',
-            title: 'E-Commerce Dashboard',
-            description: 'Admin dashboard with analytics, product management, and real-time reporting.',
-            tags: ['React', 'Tailwind', 'Chart.js'],
-        },
-        {
-            id: 2,
-            image: '/foto.png',
-            title: 'Travel Booking App',
-            description: 'Mobile app design for seamless travel booking experience.',
-            tags: ['Figma', 'UI/UX', 'Prototype'],
-        },
-        {
-            id: 3,
-            image: '/foto.png',
-            title: 'Portfolio Website',
-            description: 'Personal portfolio with 3D elements and smooth animations.',
-            tags: ['React', 'Three.js', 'CSS'],
-        },
-    ];
+    // Take only first 3 projects for homepage
+    const featuredProjects = projects.slice(0, 3);
 
     return (
         <section id="projects" className="py-24 lg:py-32 bg-white">
@@ -38,7 +20,7 @@ export default function Projects() {
                         </div>
                         <h2 className="text-3xl sm:text-4xl font-semibold tracking-tight text-gray-800">Featured Work</h2>
                     </div>
-                    <a href="#" className="text-sm text-gray-400 hover:text-[#ec4899] transition-colors flex items-center gap-2 group">
+                    <a href="/project" className="text-sm text-gray-400 hover:text-[#ec4899] transition-colors flex items-center gap-2 group">
                         View All
                         <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
@@ -48,8 +30,8 @@ export default function Projects() {
 
                 {/* Projects Grid */}
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-                    {projects.map((project, index) => (
-                        <a key={project.id} href="#" className="group block">
+                    {featuredProjects.map((project, index) => (
+                        <Link key={project.id} href={`/project/${project.id}`} className="group block">
                             <article className="h-full bg-[#fdf2f8] border border-pink-100 rounded-2xl overflow-hidden hover:shadow-lg hover:border-pink-200 transition-all">
                                 {/* Project Image */}
                                 <div className="relative h-48 overflow-hidden bg-pink-50">
@@ -83,7 +65,7 @@ export default function Projects() {
 
                                     {/* Tags */}
                                     <div className="flex flex-wrap gap-2">
-                                        {project.tags.map((tag) => (
+                                        {project.tags.map((tag: string) => (
                                             <span
                                                 key={tag}
                                                 className="px-2.5 py-1 text-xs text-gray-500 bg-pink-50 border border-pink-100 rounded-full"
@@ -94,7 +76,7 @@ export default function Projects() {
                                     </div>
                                 </div>
                             </article>
-                        </a>
+                        </Link>
                     ))}
                 </div>
 
