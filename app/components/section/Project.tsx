@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { projects, Project } from '@/datadummy/projects';
 
 export default function Projects() {
-    // Take only first 3 projects for homepage
+
     const featuredProjects = projects.slice(0, 3);
 
     return (

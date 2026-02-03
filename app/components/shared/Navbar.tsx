@@ -15,7 +15,7 @@ export default function Navbar() {
     }, []);
     return (
         <nav className="fixed top-0 left-0 right-0 z-50 pt-4 px-6">
-            {/* Desktop Navbar - Content Width Only */}
+            {/* Desktop Navbar*/}
             <div
                 className={`hidden md:flex max-w-6xl mx-auto items-center justify-between px-6 py-3 rounded-full transition-all duration-300 ${isScrolled
                     ? 'bg-white/90 backdrop-blur-lg shadow-lg border border-pink-100'
