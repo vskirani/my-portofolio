@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect } from 'react';
-import CircularGallery from '../CircularGallery';
+import CircularGallery from './CircularGallery';
 
 export default function About() {
     const roles = ['Frontend Developer', 'UI/UX Designer'];
@@ -88,21 +88,21 @@ export default function About() {
                         </div>
 
                         {/* Info */}
-                        <div className="flex flex-wrap gap-4 pt-2">
+                        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
                             <div className="flex items-center gap-3">
-                                <div className="w-10 h-10 rounded-xl bg-pink-50 border border-pink-100 flex items-center justify-center">
+                                <div className="w-10 h-10 rounded-xl bg-pink-50 border border-pink-100 flex items-center justify-center shrink-0">
                                     <svg className="w-5 h-5 text-[#ec4899]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                                     </svg>
                                 </div>
-                                <div>
+                                <div className="min-w-0">
                                     <p className="text-xs text-gray-400">Email</p>
-                                    <p className="text-sm text-gray-700">kvitriseptia@email.com</p>
+                                    <p className="text-sm text-gray-700 truncate">kvitriseptia@gmail.com</p>
                                 </div>
                             </div>
 
                             <div className="flex items-center gap-3">
-                                <div className="w-10 h-10 rounded-xl bg-pink-50 border border-pink-100 flex items-center justify-center">
+                                <div className="w-10 h-10 rounded-xl bg-pink-50 border border-pink-100 flex items-center justify-center shrink-0">
                                     <svg className="w-5 h-5 text-[#ec4899]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
@@ -115,7 +115,7 @@ export default function About() {
                             </div>
 
                             <div className="flex items-center gap-3">
-                                <div className="w-10 h-10 rounded-xl bg-green-50 border border-green-100 flex items-center justify-center">
+                                <div className="w-10 h-10 rounded-xl bg-green-50 border border-green-100 flex items-center justify-center shrink-0">
                                     <span className="w-2.5 h-2.5 bg-green-400 rounded-full animate-pulse" />
                                 </div>
                                 <div>
