@@ -39,10 +39,6 @@ export default async function ProjectDetailPage({ params }: PageProps) {
                         {project.title}
                     </h1>
 
-                    <p className="text-lg text-gray-500 max-w-2xl mb-8">
-                        {project.description}
-                    </p>
-
                     {/* Links */}
                     <div className="flex flex-wrap gap-3">
                         <a
@@ -86,7 +82,31 @@ export default async function ProjectDetailPage({ params }: PageProps) {
 
             {/* Content */}
             <section className="py-20 px-6">
-                <div className="max-w-4xl mx-auto space-y-16">
+                <div className="max-w-4xl mx-auto space-y-8">
+                    {/* Deskripsi */}
+                    <p className="text-lg text-gray-500 max-w-2xl mb-8">
+                        {project.description}
+                    </p>
+
+                    {/* My Role */}
+                    <div>
+                        <div className="flex items-center gap-3 mb-4">
+                            <span className="w-10 h-10 rounded-xl bg-blue-50 border border-blue-100 flex items-center justify-center text-blue-500">
+                                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                                </svg>
+                            </span>
+                            <h2 className="text-2xl font-semibold text-gray-800">My Role</h2>
+                        </div>
+                        <ul className="space-y-3 pl-13">
+                            {project.roles.map((role, index) => (
+                                <li key={index} className="flex items-start gap-3 text-gray-600">
+                                    <span className="w-2 h-2 rounded-full bg-[#ec4899] mt-2 flex-shrink-0" />
+                                    <span>{role}</span>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
 
                     {/* Problem */}
                     <div>
@@ -118,8 +138,23 @@ export default async function ProjectDetailPage({ params }: PageProps) {
                         </p>
                     </div>
 
-                    {/* Design Process */}
+                    {/* Result */}
                     <div>
+                        <div className="flex items-center gap-3 mb-4">
+                            <span className="w-10 h-10 rounded-xl bg-white border border-pink-100 flex items-center justify-center text-[#ec4899]">
+                                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+                                </svg>
+                            </span>
+                            <h2 className="text-2xl font-semibold text-gray-800">Result</h2>
+                        </div>
+                        <p className="text-gray-600 leading-relaxed pl-13">
+                            {project.result}
+                        </p>
+                    </div>
+
+                    {/* Design Process */}
+                    <div className="mt-20">
                         <div className="flex items-center gap-3 mb-6">
                             <span className="w-10 h-10 rounded-xl bg-purple-50 border border-purple-100 flex items-center justify-center text-purple-500">
                                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -138,7 +173,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
                     </div>
 
                     {/* Tech Used */}
-                    <div>
+                    <div className="mt-20">
                         <div className="flex items-center gap-3 mb-6">
                             <span className="w-10 h-10 rounded-xl bg-orange-50 border border-orange-100 flex items-center justify-center text-orange-500">
                                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -157,21 +192,6 @@ export default async function ProjectDetailPage({ params }: PageProps) {
                                 </span>
                             ))}
                         </div>
-                    </div>
-
-                    {/* Result */}
-                    <div className="bg-gradient-to-br from-[#fdf2f8] to-pink-100 rounded-2xl p-8 border border-pink-100">
-                        <div className="flex items-center gap-3 mb-4">
-                            <span className="w-10 h-10 rounded-xl bg-white border border-pink-100 flex items-center justify-center text-[#ec4899]">
-                                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
-                                </svg>
-                            </span>
-                            <h2 className="text-2xl font-semibold text-gray-800">Result</h2>
-                        </div>
-                        <p className="text-gray-700 leading-relaxed text-lg">
-                            {project.result}
-                        </p>
                     </div>
 
                 </div>

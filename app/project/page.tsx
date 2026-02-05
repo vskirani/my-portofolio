@@ -101,16 +101,6 @@ export default function ProjectsPage() {
                             </Link>
                         ))}
                     </div>
-
-                    {/* Load More */}
-                    <div className="text-center mt-12">
-                        <button className="inline-flex items-center gap-2 px-8 py-3.5 text-sm font-medium border border-pink-200 text-gray-700 rounded-full hover:border-[#ec4899] hover:text-[#ec4899] transition-all bg-white shadow-sm">
-                            Load More Projects
-                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                            </svg>
-                        </button>
-                    </div>
                 </div>
             </section>
         </main>
