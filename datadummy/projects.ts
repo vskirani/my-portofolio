@@ -7,7 +7,6 @@ export interface Project {
     category: string;
     githubUrl: string;
     liveUrl: string;
-    roles: string[];
     problem: string;
     solution: string;
     designProcess: string[];
@@ -26,11 +25,6 @@ export const projects: Project[] = [
         category: 'Web App',
         githubUrl: 'https://github.com/vskirani/ecommerce-dashboard',
         liveUrl: 'https://ecommerce-dashboard.vercel.app',
-        roles: [
-            'Frontend Developer',
-            'UI/UX Designer',
-            'Data Visualization Specialist',
-        ],
         problem: 'Bisnis e-commerce membutuhkan dashboard yang dapat menampilkan data penjualan, inventaris, dan performa secara real-time. Dashboard yang ada sebelumnya lambat dan sulit digunakan.',
         solution: 'Membangun dashboard modern dengan React dan Chart.js yang menampilkan visualisasi data interaktif, manajemen produk yang mudah, dan notifikasi real-time untuk pesanan baru.',
         designProcess: [
@@ -60,11 +54,6 @@ export const projects: Project[] = [
         category: 'UI/UX',
         githubUrl: 'https://github.com/vskirani/travel-app',
         liveUrl: 'https://travel-app-demo.vercel.app',
-        roles: [
-            'UI/UX Designer',
-            'User Researcher',
-            'Prototyping Specialist',
-        ],
         problem: 'Aplikasi travel booking yang ada memiliki UX yang kompleks dengan terlalu banyak langkah untuk melakukan pemesanan, menyebabkan banyak pengguna abandon di tengah proses.',
         solution: 'Mendesain ulang alur pemesanan dengan pendekatan mobile-first, mengurangi langkah pemesanan dari 8 menjadi 3 langkah dengan UI yang intuitif dan modern.',
         designProcess: [
@@ -92,11 +81,6 @@ export const projects: Project[] = [
         category: 'Web App',
         githubUrl: 'https://github.com/vskirani/portfolio',
         liveUrl: 'https://kirani.vercel.app',
-        roles: [
-            'Full Stack Developer',
-            'UI/UX Designer',
-            '3D Artist',
-        ],
         problem: 'Membutuhkan portfolio yang dapat menampilkan karya dengan cara yang menarik dan interaktif, berbeda dari portfolio template pada umumnya.',
         solution: 'Membangun portfolio dengan elemen 3D menggunakan Three.js, animasi smooth dengan Framer Motion, dan desain yang clean dengan warna pink aesthetic.',
         designProcess: [
@@ -123,11 +107,6 @@ export const projects: Project[] = [
         category: 'Web App',
         githubUrl: 'https://github.com/vskirani/task-app',
         liveUrl: 'https://task-app.vercel.app',
-        roles: [
-            'Full Stack Developer',
-            'Backend Developer',
-            'Database Designer',
-        ],
         problem: 'Tim remote membutuhkan aplikasi task management yang ringan namun powerful dengan fitur kolaborasi real-time.',
         solution: 'Membangun aplikasi task management dengan fitur drag-and-drop, real-time sync, dan notifikasi push untuk update task.',
         designProcess: [
@@ -154,11 +133,6 @@ export const projects: Project[] = [
         category: 'UI/UX',
         githubUrl: 'https://github.com/vskirani/food-delivery-ui',
         liveUrl: 'https://figma.com/food-delivery',
-        roles: [
-            'UI Designer',
-            'Interaction Designer',
-            'Visual Designer',
-        ],
         problem: 'Aplikasi food delivery existing memiliki UI yang outdated dan flow pemesanan yang membingungkan pengguna.',
         solution: 'Redesign complete dengan focus pada visual hierarchy yang jelas, one-tap ordering, dan tracking yang informatif.',
         designProcess: [
@@ -184,11 +158,6 @@ export const projects: Project[] = [
         category: 'Web App',
         githubUrl: 'https://github.com/vskirani/finance-tracker',
         liveUrl: 'https://finance-tracker.vercel.app',
-        roles: [
-            'Frontend Developer',
-            'UI/UX Designer',
-            'Firebase Developer',
-        ],
         problem: 'Orang kesulitan tracking pengeluaran harian dan tidak memiliki insight tentang spending habits mereka.',
         solution: 'Aplikasi finance tracker dengan auto-categorization, visualisasi spending, dan reminder untuk budget limits.',
         designProcess: [

@@ -1,7 +1,9 @@
 import Link from 'next/link';
-import { projects } from '@/datadummy/projects';
+import { getListProjectsService } from '@/src/services/project.service';
 
-export default function ProjectsPage() {
+export default async function ProjectsPage() {
+    const res = await getListProjectsService(); // minta data dari service
+    const projects = res.data; // ambil data dari service
     const categories = ['All', 'Web App', 'UI/UX'];
 
     return (
@@ -53,14 +55,14 @@ export default function ProjectsPage() {
                                     {/* Project Image */}
                                     <div className="relative h-52 overflow-hidden bg-pink-50">
                                         <img
-                                            src={project.image}
+                                            src={project.image_url}
                                             alt={project.title}
                                             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                                         />
 
                                         {/* Category Badge */}
                                         <span className="absolute top-4 left-4 px-3 py-1 text-xs font-medium text-[#ec4899] bg-white/90 backdrop-blur-sm rounded-full border border-pink-100">
-                                            {project.category}
+                                            {project.type_code}
                                         </span>
 
                                         {/* Number */}
@@ -85,17 +87,17 @@ export default function ProjectsPage() {
                                             {project.description}
                                         </p>
 
-                                        {/* Tags */}
+                                        {/* Tags
                                         <div className="flex flex-wrap gap-2">
-                                            {project.tags.map((tag) => (
+                                            {project.tech_stacks.map((tech_stack) => (
                                                 <span
-                                                    key={tag}
+                                                    key={tech_stack.id}
                                                     className="px-3 py-1.5 text-xs text-gray-500 bg-pink-50 border border-pink-100 rounded-full"
                                                 >
-                                                    {tag}
+                                                    {tech_stack.name}
                                                 </span>
                                             ))}
-                                        </div>
+                                        </div> */}
                                     </div>
                                 </article>
                             </Link>
