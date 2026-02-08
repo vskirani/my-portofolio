@@ -1,32 +1,37 @@
-import Link from 'next/link';
-import { getListProjectsService } from '@/src/services/project.service';
+import Link from "next/link";
+import { getListProjectsService } from "@/src/services/project.service";
 
 export default async function ProjectsPage() {
     const res = await getListProjectsService(); // minta data dari service
     const projects = res.data; // ambil data dari service
-    const categories = ['All', 'Web App', 'UI/UX'];
+    const categories = ["All", "Web App", "UI/UX"];
 
     return (
         <main className="min-h-screen bg-[#fdf2f8]">
             {/* Header */}
             <section className="pt-32 pb-16 px-6">
                 <div className="max-w-6xl mx-auto">
-
                     {/* Title */}
                     <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-12">
                         <div>
                             <div className="flex items-center gap-4 mb-4">
-                                <Link href="/" className="flex items-center justify-center w-10 h-10 text-xs font-semibold text-[#ec4899] bg-white border border-pink-100 rounded-xl">
+                                <Link
+                                    href="/"
+                                    className="flex items-center justify-center w-10 h-10 text-xs font-semibold text-[#ec4899] bg-white border border-pink-100 rounded-xl"
+                                >
                                     🔙
                                 </Link>
                                 <span className="w-10 h-px bg-gradient-to-r from-[#ec4899] to-transparent" />
-                                <span className="text-xs font-medium uppercase tracking-widest text-gray-500">Portfolio</span>
+                                <span className="text-xs font-medium uppercase tracking-widest text-gray-500">
+                                    Portfolio
+                                </span>
                             </div>
                             <h1 className="text-4xl sm:text-5xl font-semibold tracking-tight text-gray-800">
                                 All Projects
                             </h1>
                             <p className="text-gray-500 mt-3 max-w-lg">
-                                A collection of my work across web development and UI/UX design.
+                                A collection of my work across web development
+                                and UI/UX design.
                             </p>
                         </div>
 
@@ -50,19 +55,23 @@ export default async function ProjectsPage() {
                 <div className="max-w-6xl mx-auto">
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                         {projects.map((project, index) => (
-                            <Link href={`/project/${project.id}`} key={project.id} className="group">
+                            <Link
+                                href={`/project/${project.id}`}
+                                key={project.id}
+                                className="group"
+                            >
                                 <article className="h-full bg-white border border-pink-100 rounded-2xl overflow-hidden hover:shadow-xl hover:border-pink-200 transition-all duration-300 hover:-translate-y-1">
                                     {/* Project Image */}
                                     <div className="relative h-52 overflow-hidden bg-pink-50">
                                         <img
-                                            src={project.image_url}
+                                            src={project.imageUrl}
                                             alt={project.title}
                                             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                                         />
 
                                         {/* Category Badge */}
                                         <span className="absolute top-4 left-4 px-3 py-1 text-xs font-medium text-[#ec4899] bg-white/90 backdrop-blur-sm rounded-full border border-pink-100">
-                                            {project.type_code}
+                                            {project.typeCode}
                                         </span>
 
                                         {/* Number */}
@@ -72,8 +81,18 @@ export default async function ProjectsPage() {
 
                                         {/* Arrow */}
                                         <div className="absolute top-4 right-4 w-9 h-9 rounded-full bg-white border border-pink-100 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 group-hover:-translate-y-1 shadow-md">
-                                            <svg className="w-4 h-4 text-[#ec4899]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 17L17 7M17 7H7M17 7v10" />
+                                            <svg
+                                                className="w-4 h-4 text-[#ec4899]"
+                                                fill="none"
+                                                stroke="currentColor"
+                                                viewBox="0 0 24 24"
+                                            >
+                                                <path
+                                                    strokeLinecap="round"
+                                                    strokeLinejoin="round"
+                                                    strokeWidth={2}
+                                                    d="M7 17L17 7M17 7H7M17 7v10"
+                                                />
                                             </svg>
                                         </div>
                                     </div>
@@ -87,17 +106,19 @@ export default async function ProjectsPage() {
                                             {project.description}
                                         </p>
 
-                                        {/* Tags
+                                        {/* Tags */}
                                         <div className="flex flex-wrap gap-2">
-                                            {project.tech_stacks.map((tech_stack) => (
-                                                <span
-                                                    key={tech_stack.id}
-                                                    className="px-3 py-1.5 text-xs text-gray-500 bg-pink-50 border border-pink-100 rounded-full"
-                                                >
-                                                    {tech_stack.name}
-                                                </span>
-                                            ))}
-                                        </div> */}
+                                            {project.techStacks.map(
+                                                (tech_stack) => (
+                                                    <span
+                                                        key={tech_stack.id}
+                                                        className="px-3 py-1.5 text-xs text-gray-500 bg-pink-50 border border-pink-100 rounded-full"
+                                                    >
+                                                        {tech_stack.name}
+                                                    </span>
+                                                ),
+                                            )}
+                                        </div>
                                     </div>
                                 </article>
                             </Link>
