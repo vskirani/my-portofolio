@@ -1,8 +1,10 @@
 import Link from "next/link";
-import { projects, Project } from "@/datadummy/projects";
+import { getListProjectsService } from "@/src/services/project.service";
 
-export default function Projects() {
-    const featuredProjects = projects.slice(0, 3);
+export default async function Projects() {
+    const res = await getListProjectsService();
+    const projects = res.data;
+
 
     return (
         <section id="projects" className="py-24 lg:py-32 bg-white">
@@ -46,7 +48,7 @@ export default function Projects() {
 
                 {/* Projects Grid */}
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-                    {featuredProjects.map((project, index) => (
+                    {projects.map((project, index) => (
                         <Link
                             key={project.id}
                             href={`/project/${project.id}`}
@@ -56,7 +58,7 @@ export default function Projects() {
                                 {/* Project Image */}
                                 <div className="relative h-48 overflow-hidden bg-pink-50">
                                     <img
-                                        src={project.image}
+                                        src={project.imageUrl}
                                         alt={project.title}
                                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                                     />
@@ -95,12 +97,12 @@ export default function Projects() {
 
                                     {/* Tags */}
                                     <div className="flex flex-wrap gap-2">
-                                        {project.tags.map((tag: string) => (
+                                        {project.techStacks.map((techStack) => (
                                             <span
-                                                key={tag}
+                                                key={techStack.id}
                                                 className="px-2.5 py-1 text-xs text-gray-500 bg-pink-50 border border-pink-100 rounded-full"
                                             >
-                                                {tag}
+                                                {techStack.name}
                                             </span>
                                         ))}
                                     </div>
