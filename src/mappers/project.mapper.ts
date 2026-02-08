@@ -27,6 +27,18 @@ export function toProjectDTO(project: any): ProjectDTO {
             code: project.project_types.code,
             name: project.project_types.name,
         },
+        designProcesses: project.design_process?.map(
+            (pdp: { id: string; image_url: string }) => ({
+                id: pdp.id,
+                imageUrl: pdp.image_url,
+            }),
+        ),
+        responsibilities: project.project_responsibilities?.map(
+            (pr: { id: string; name: string }) => ({
+                id: pr.id,
+                name: pr.name,
+            }),
+        ),
     };
 }
 // eslint-disable-next-line @typescript-eslint/no-explicit-any

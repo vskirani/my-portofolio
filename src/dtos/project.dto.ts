@@ -12,6 +12,14 @@ export type ProjectTypeDTO = {
     code: string;
     name: string;
 };
+export type DesignProcessDTO = {
+    id: string;
+    imageUrl: string;
+};
+export type ResponsibilityDTO = {
+    id: string;
+    name: string;
+};
 export type ProjectDTO = {
     id: string;
     title: string;
@@ -29,4 +37,6 @@ export type ProjectDTO = {
     createdAt: Date;
     techStacks: TechStackDTO[];
     projectType: ProjectTypeDTO;
+    designProcesses: DesignProcessDTO[];
+    responsibilities: ResponsibilityDTO[];
 };

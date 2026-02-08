@@ -26,6 +26,8 @@ export async function findProjectByIDRepo(id: string) {
         include: {
             tech_stacks: true,
             project_types: true,
+            design_process: true,
+            project_responsibilities: true,
         },
     });
 }
