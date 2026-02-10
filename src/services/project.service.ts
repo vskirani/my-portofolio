@@ -1,5 +1,6 @@
 import { SuccessResponse } from "../dtos/response.dto";
 import {
+    countProjectsRepo,
     findProjectByIDRepo,
     findProjectsRepo,
 } from "../repositories/project.repository";
@@ -29,5 +30,14 @@ export async function getProjectByIDService(
         success: true,
         message: "Successfully retrieved project by ID",
         data: toProjectDTO(project),
+    };
+}
+
+export async function countProjectsService(): Promise<SuccessResponse<number>> {
+    const count = await countProjectsRepo();
+    return {
+        success: true,
+        message: "Successfully retrieved count of projects",
+        data: count,
     };
 }

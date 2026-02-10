@@ -48,6 +48,7 @@ model projects {
   result                   String?
   created_at               DateTime                   @default(now()) @db.Timestamptz(6)
   is_starred               Boolean                    @default(false)
+  year                     Int
   design_process           design_process[]
   project_responsibilities project_responsibilities[]
   project_types            project_types              @relation(fields: [type_code], references: [code], onDelete: NoAction, onUpdate: NoAction, map: "projects_project_types_code_fk")
