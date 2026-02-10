@@ -35,6 +35,7 @@ export type ProjectDTO = {
     result: string | null;
     isStarred: boolean;
     createdAt: Date;
+    year: number;
     techStacks: TechStackDTO[];
     projectType: ProjectTypeDTO;
     designProcesses: DesignProcessDTO[];

@@ -20,8 +20,18 @@ export type projectsModel = runtime.Types.Result.DefaultSelection<Prisma.$projec
 
 export type AggregateProjects = {
   _count: ProjectsCountAggregateOutputType | null
+  _avg: ProjectsAvgAggregateOutputType | null
+  _sum: ProjectsSumAggregateOutputType | null
   _min: ProjectsMinAggregateOutputType | null
   _max: ProjectsMaxAggregateOutputType | null
+}
+
+export type ProjectsAvgAggregateOutputType = {
+  year: number | null
+}
+
+export type ProjectsSumAggregateOutputType = {
+  year: number | null
 }
 
 export type ProjectsMinAggregateOutputType = {
@@ -39,6 +49,7 @@ export type ProjectsMinAggregateOutputType = {
   result: string | null
   created_at: Date | null
   is_starred: boolean | null
+  year: number | null
 }
 
 export type ProjectsMaxAggregateOutputType = {
@@ -56,6 +67,7 @@ export type ProjectsMaxAggregateOutputType = {
   result: string | null
   created_at: Date | null
   is_starred: boolean | null
+  year: number | null
 }
 
 export type ProjectsCountAggregateOutputType = {
@@ -73,9 +85,18 @@ export type ProjectsCountAggregateOutputType = {
   result: number
   created_at: number
   is_starred: number
+  year: number
   _all: number
 }
 
+
+export type ProjectsAvgAggregateInputType = {
+  year?: true
+}
+
+export type ProjectsSumAggregateInputType = {
+  year?: true
+}
 
 export type ProjectsMinAggregateInputType = {
   id?: true
@@ -92,6 +113,7 @@ export type ProjectsMinAggregateInputType = {
   result?: true
   created_at?: true
   is_starred?: true
+  year?: true
 }
 
 export type ProjectsMaxAggregateInputType = {
@@ -109,6 +131,7 @@ export type ProjectsMaxAggregateInputType = {
   result?: true
   created_at?: true
   is_starred?: true
+  year?: true
 }
 
 export type ProjectsCountAggregateInputType = {
@@ -126,6 +149,7 @@ export type ProjectsCountAggregateInputType = {
   result?: true
   created_at?: true
   is_starred?: true
+  year?: true
   _all?: true
 }
 
@@ -167,6 +191,18 @@ export type ProjectsAggregateArgs<ExtArgs extends runtime.Types.Extensions.Inter
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
    * 
+   * Select which fields to average
+  **/
+  _avg?: ProjectsAvgAggregateInputType
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+   * 
+   * Select which fields to sum
+  **/
+  _sum?: ProjectsSumAggregateInputType
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+   * 
    * Select which fields to find the minimum value
   **/
   _min?: ProjectsMinAggregateInputType
@@ -197,6 +233,8 @@ export type projectsGroupByArgs<ExtArgs extends runtime.Types.Extensions.Interna
   take?: number
   skip?: number
   _count?: ProjectsCountAggregateInputType | true
+  _avg?: ProjectsAvgAggregateInputType
+  _sum?: ProjectsSumAggregateInputType
   _min?: ProjectsMinAggregateInputType
   _max?: ProjectsMaxAggregateInputType
 }
@@ -216,7 +254,10 @@ export type ProjectsGroupByOutputType = {
   result: string | null
   created_at: Date
   is_starred: boolean
+  year: number
   _count: ProjectsCountAggregateOutputType | null
+  _avg: ProjectsAvgAggregateOutputType | null
+  _sum: ProjectsSumAggregateOutputType | null
   _min: ProjectsMinAggregateOutputType | null
   _max: ProjectsMaxAggregateOutputType | null
 }
@@ -254,6 +295,7 @@ export type projectsWhereInput = {
   result?: Prisma.StringNullableFilter<"projects"> | string | null
   created_at?: Prisma.DateTimeFilter<"projects"> | Date | string
   is_starred?: Prisma.BoolFilter<"projects"> | boolean
+  year?: Prisma.IntFilter<"projects"> | number
   design_process?: Prisma.Design_processListRelationFilter
   project_responsibilities?: Prisma.Project_responsibilitiesListRelationFilter
   project_types?: Prisma.XOR<Prisma.Project_typesScalarRelationFilter, Prisma.project_typesWhereInput>
@@ -275,6 +317,7 @@ export type projectsOrderByWithRelationInput = {
   result?: Prisma.SortOrderInput | Prisma.SortOrder
   created_at?: Prisma.SortOrder
   is_starred?: Prisma.SortOrder
+  year?: Prisma.SortOrder
   design_process?: Prisma.design_processOrderByRelationAggregateInput
   project_responsibilities?: Prisma.project_responsibilitiesOrderByRelationAggregateInput
   project_types?: Prisma.project_typesOrderByWithRelationInput
@@ -299,6 +342,7 @@ export type projectsWhereUniqueInput = Prisma.AtLeast<{
   result?: Prisma.StringNullableFilter<"projects"> | string | null
   created_at?: Prisma.DateTimeFilter<"projects"> | Date | string
   is_starred?: Prisma.BoolFilter<"projects"> | boolean
+  year?: Prisma.IntFilter<"projects"> | number
   design_process?: Prisma.Design_processListRelationFilter
   project_responsibilities?: Prisma.Project_responsibilitiesListRelationFilter
   project_types?: Prisma.XOR<Prisma.Project_typesScalarRelationFilter, Prisma.project_typesWhereInput>
@@ -320,9 +364,12 @@ export type projectsOrderByWithAggregationInput = {
   result?: Prisma.SortOrderInput | Prisma.SortOrder
   created_at?: Prisma.SortOrder
   is_starred?: Prisma.SortOrder
+  year?: Prisma.SortOrder
   _count?: Prisma.projectsCountOrderByAggregateInput
+  _avg?: Prisma.projectsAvgOrderByAggregateInput
   _max?: Prisma.projectsMaxOrderByAggregateInput
   _min?: Prisma.projectsMinOrderByAggregateInput
+  _sum?: Prisma.projectsSumOrderByAggregateInput
 }
 
 export type projectsScalarWhereWithAggregatesInput = {
@@ -343,6 +390,7 @@ export type projectsScalarWhereWithAggregatesInput = {
   result?: Prisma.StringNullableWithAggregatesFilter<"projects"> | string | null
   created_at?: Prisma.DateTimeWithAggregatesFilter<"projects"> | Date | string
   is_starred?: Prisma.BoolWithAggregatesFilter<"projects"> | boolean
+  year?: Prisma.IntWithAggregatesFilter<"projects"> | number
 }
 
 export type projectsCreateInput = {
@@ -359,6 +407,7 @@ export type projectsCreateInput = {
   result?: string | null
   created_at?: Date | string
   is_starred?: boolean
+  year: number
   design_process?: Prisma.design_processCreateNestedManyWithoutProjectsInput
   project_responsibilities?: Prisma.project_responsibilitiesCreateNestedManyWithoutProjectsInput
   project_types: Prisma.project_typesCreateNestedOneWithoutProjectsInput
@@ -380,6 +429,7 @@ export type projectsUncheckedCreateInput = {
   result?: string | null
   created_at?: Date | string
   is_starred?: boolean
+  year: number
   design_process?: Prisma.design_processUncheckedCreateNestedManyWithoutProjectsInput
   project_responsibilities?: Prisma.project_responsibilitiesUncheckedCreateNestedManyWithoutProjectsInput
   tech_stacks?: Prisma.tech_stacksUncheckedCreateNestedManyWithoutProjectsInput
@@ -399,6 +449,7 @@ export type projectsUpdateInput = {
   result?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   is_starred?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  year?: Prisma.IntFieldUpdateOperationsInput | number
   design_process?: Prisma.design_processUpdateManyWithoutProjectsNestedInput
   project_responsibilities?: Prisma.project_responsibilitiesUpdateManyWithoutProjectsNestedInput
   project_types?: Prisma.project_typesUpdateOneRequiredWithoutProjectsNestedInput
@@ -420,6 +471,7 @@ export type projectsUncheckedUpdateInput = {
   result?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   is_starred?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  year?: Prisma.IntFieldUpdateOperationsInput | number
   design_process?: Prisma.design_processUncheckedUpdateManyWithoutProjectsNestedInput
   project_responsibilities?: Prisma.project_responsibilitiesUncheckedUpdateManyWithoutProjectsNestedInput
   tech_stacks?: Prisma.tech_stacksUncheckedUpdateManyWithoutProjectsNestedInput
@@ -440,6 +492,7 @@ export type projectsCreateManyInput = {
   result?: string | null
   created_at?: Date | string
   is_starred?: boolean
+  year: number
 }
 
 export type projectsUpdateManyMutationInput = {
@@ -456,6 +509,7 @@ export type projectsUpdateManyMutationInput = {
   result?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   is_starred?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  year?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
 export type projectsUncheckedUpdateManyInput = {
@@ -473,6 +527,7 @@ export type projectsUncheckedUpdateManyInput = {
   result?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   is_starred?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  year?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
 export type ProjectsScalarRelationFilter = {
@@ -495,6 +550,11 @@ export type projectsCountOrderByAggregateInput = {
   result?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
   is_starred?: Prisma.SortOrder
+  year?: Prisma.SortOrder
+}
+
+export type projectsAvgOrderByAggregateInput = {
+  year?: Prisma.SortOrder
 }
 
 export type projectsMaxOrderByAggregateInput = {
@@ -512,6 +572,7 @@ export type projectsMaxOrderByAggregateInput = {
   result?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
   is_starred?: Prisma.SortOrder
+  year?: Prisma.SortOrder
 }
 
 export type projectsMinOrderByAggregateInput = {
@@ -529,6 +590,11 @@ export type projectsMinOrderByAggregateInput = {
   result?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
   is_starred?: Prisma.SortOrder
+  year?: Prisma.SortOrder
+}
+
+export type projectsSumOrderByAggregateInput = {
+  year?: Prisma.SortOrder
 }
 
 export type ProjectsListRelationFilter = {
@@ -575,6 +641,14 @@ export type NullableStringFieldUpdateOperationsInput = {
 
 export type BoolFieldUpdateOperationsInput = {
   set?: boolean
+}
+
+export type IntFieldUpdateOperationsInput = {
+  set?: number
+  increment?: number
+  decrement?: number
+  multiply?: number
+  divide?: number
 }
 
 export type projectsCreateNestedOneWithoutTech_stacksInput = {
@@ -647,6 +721,7 @@ export type projectsCreateWithoutDesign_processInput = {
   result?: string | null
   created_at?: Date | string
   is_starred?: boolean
+  year: number
   project_responsibilities?: Prisma.project_responsibilitiesCreateNestedManyWithoutProjectsInput
   project_types: Prisma.project_typesCreateNestedOneWithoutProjectsInput
   tech_stacks?: Prisma.tech_stacksCreateNestedManyWithoutProjectsInput
@@ -667,6 +742,7 @@ export type projectsUncheckedCreateWithoutDesign_processInput = {
   result?: string | null
   created_at?: Date | string
   is_starred?: boolean
+  year: number
   project_responsibilities?: Prisma.project_responsibilitiesUncheckedCreateNestedManyWithoutProjectsInput
   tech_stacks?: Prisma.tech_stacksUncheckedCreateNestedManyWithoutProjectsInput
 }
@@ -701,6 +777,7 @@ export type projectsUpdateWithoutDesign_processInput = {
   result?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   is_starred?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  year?: Prisma.IntFieldUpdateOperationsInput | number
   project_responsibilities?: Prisma.project_responsibilitiesUpdateManyWithoutProjectsNestedInput
   project_types?: Prisma.project_typesUpdateOneRequiredWithoutProjectsNestedInput
   tech_stacks?: Prisma.tech_stacksUpdateManyWithoutProjectsNestedInput
@@ -721,6 +798,7 @@ export type projectsUncheckedUpdateWithoutDesign_processInput = {
   result?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   is_starred?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  year?: Prisma.IntFieldUpdateOperationsInput | number
   project_responsibilities?: Prisma.project_responsibilitiesUncheckedUpdateManyWithoutProjectsNestedInput
   tech_stacks?: Prisma.tech_stacksUncheckedUpdateManyWithoutProjectsNestedInput
 }
@@ -739,6 +817,7 @@ export type projectsCreateWithoutProject_responsibilitiesInput = {
   result?: string | null
   created_at?: Date | string
   is_starred?: boolean
+  year: number
   design_process?: Prisma.design_processCreateNestedManyWithoutProjectsInput
   project_types: Prisma.project_typesCreateNestedOneWithoutProjectsInput
   tech_stacks?: Prisma.tech_stacksCreateNestedManyWithoutProjectsInput
@@ -759,6 +838,7 @@ export type projectsUncheckedCreateWithoutProject_responsibilitiesInput = {
   result?: string | null
   created_at?: Date | string
   is_starred?: boolean
+  year: number
   design_process?: Prisma.design_processUncheckedCreateNestedManyWithoutProjectsInput
   tech_stacks?: Prisma.tech_stacksUncheckedCreateNestedManyWithoutProjectsInput
 }
@@ -793,6 +873,7 @@ export type projectsUpdateWithoutProject_responsibilitiesInput = {
   result?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   is_starred?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  year?: Prisma.IntFieldUpdateOperationsInput | number
   design_process?: Prisma.design_processUpdateManyWithoutProjectsNestedInput
   project_types?: Prisma.project_typesUpdateOneRequiredWithoutProjectsNestedInput
   tech_stacks?: Prisma.tech_stacksUpdateManyWithoutProjectsNestedInput
@@ -813,6 +894,7 @@ export type projectsUncheckedUpdateWithoutProject_responsibilitiesInput = {
   result?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   is_starred?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  year?: Prisma.IntFieldUpdateOperationsInput | number
   design_process?: Prisma.design_processUncheckedUpdateManyWithoutProjectsNestedInput
   tech_stacks?: Prisma.tech_stacksUncheckedUpdateManyWithoutProjectsNestedInput
 }
@@ -831,6 +913,7 @@ export type projectsCreateWithoutTech_stacksInput = {
   result?: string | null
   created_at?: Date | string
   is_starred?: boolean
+  year: number
   design_process?: Prisma.design_processCreateNestedManyWithoutProjectsInput
   project_responsibilities?: Prisma.project_responsibilitiesCreateNestedManyWithoutProjectsInput
   project_types: Prisma.project_typesCreateNestedOneWithoutProjectsInput
@@ -851,6 +934,7 @@ export type projectsUncheckedCreateWithoutTech_stacksInput = {
   result?: string | null
   created_at?: Date | string
   is_starred?: boolean
+  year: number
   design_process?: Prisma.design_processUncheckedCreateNestedManyWithoutProjectsInput
   project_responsibilities?: Prisma.project_responsibilitiesUncheckedCreateNestedManyWithoutProjectsInput
 }
@@ -885,6 +969,7 @@ export type projectsUpdateWithoutTech_stacksInput = {
   result?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   is_starred?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  year?: Prisma.IntFieldUpdateOperationsInput | number
   design_process?: Prisma.design_processUpdateManyWithoutProjectsNestedInput
   project_responsibilities?: Prisma.project_responsibilitiesUpdateManyWithoutProjectsNestedInput
   project_types?: Prisma.project_typesUpdateOneRequiredWithoutProjectsNestedInput
@@ -905,6 +990,7 @@ export type projectsUncheckedUpdateWithoutTech_stacksInput = {
   result?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   is_starred?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  year?: Prisma.IntFieldUpdateOperationsInput | number
   design_process?: Prisma.design_processUncheckedUpdateManyWithoutProjectsNestedInput
   project_responsibilities?: Prisma.project_responsibilitiesUncheckedUpdateManyWithoutProjectsNestedInput
 }
@@ -923,6 +1009,7 @@ export type projectsCreateWithoutProject_typesInput = {
   result?: string | null
   created_at?: Date | string
   is_starred?: boolean
+  year: number
   design_process?: Prisma.design_processCreateNestedManyWithoutProjectsInput
   project_responsibilities?: Prisma.project_responsibilitiesCreateNestedManyWithoutProjectsInput
   tech_stacks?: Prisma.tech_stacksCreateNestedManyWithoutProjectsInput
@@ -942,6 +1029,7 @@ export type projectsUncheckedCreateWithoutProject_typesInput = {
   result?: string | null
   created_at?: Date | string
   is_starred?: boolean
+  year: number
   design_process?: Prisma.design_processUncheckedCreateNestedManyWithoutProjectsInput
   project_responsibilities?: Prisma.project_responsibilitiesUncheckedCreateNestedManyWithoutProjectsInput
   tech_stacks?: Prisma.tech_stacksUncheckedCreateNestedManyWithoutProjectsInput
@@ -991,6 +1079,7 @@ export type projectsScalarWhereInput = {
   result?: Prisma.StringNullableFilter<"projects"> | string | null
   created_at?: Prisma.DateTimeFilter<"projects"> | Date | string
   is_starred?: Prisma.BoolFilter<"projects"> | boolean
+  year?: Prisma.IntFilter<"projects"> | number
 }
 
 export type projectsCreateManyProject_typesInput = {
@@ -1007,6 +1096,7 @@ export type projectsCreateManyProject_typesInput = {
   result?: string | null
   created_at?: Date | string
   is_starred?: boolean
+  year: number
 }
 
 export type projectsUpdateWithoutProject_typesInput = {
@@ -1023,6 +1113,7 @@ export type projectsUpdateWithoutProject_typesInput = {
   result?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   is_starred?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  year?: Prisma.IntFieldUpdateOperationsInput | number
   design_process?: Prisma.design_processUpdateManyWithoutProjectsNestedInput
   project_responsibilities?: Prisma.project_responsibilitiesUpdateManyWithoutProjectsNestedInput
   tech_stacks?: Prisma.tech_stacksUpdateManyWithoutProjectsNestedInput
@@ -1042,6 +1133,7 @@ export type projectsUncheckedUpdateWithoutProject_typesInput = {
   result?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   is_starred?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  year?: Prisma.IntFieldUpdateOperationsInput | number
   design_process?: Prisma.design_processUncheckedUpdateManyWithoutProjectsNestedInput
   project_responsibilities?: Prisma.project_responsibilitiesUncheckedUpdateManyWithoutProjectsNestedInput
   tech_stacks?: Prisma.tech_stacksUncheckedUpdateManyWithoutProjectsNestedInput
@@ -1061,6 +1153,7 @@ export type projectsUncheckedUpdateManyWithoutProject_typesInput = {
   result?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   is_starred?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  year?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
 
@@ -1127,6 +1220,7 @@ export type projectsSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs
   result?: boolean
   created_at?: boolean
   is_starred?: boolean
+  year?: boolean
   design_process?: boolean | Prisma.projects$design_processArgs<ExtArgs>
   project_responsibilities?: boolean | Prisma.projects$project_responsibilitiesArgs<ExtArgs>
   project_types?: boolean | Prisma.project_typesDefaultArgs<ExtArgs>
@@ -1149,6 +1243,7 @@ export type projectsSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exte
   result?: boolean
   created_at?: boolean
   is_starred?: boolean
+  year?: boolean
   project_types?: boolean | Prisma.project_typesDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["projects"]>
 
@@ -1167,6 +1262,7 @@ export type projectsSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exte
   result?: boolean
   created_at?: boolean
   is_starred?: boolean
+  year?: boolean
   project_types?: boolean | Prisma.project_typesDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["projects"]>
 
@@ -1185,9 +1281,10 @@ export type projectsSelectScalar = {
   result?: boolean
   created_at?: boolean
   is_starred?: boolean
+  year?: boolean
 }
 
-export type projectsOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "title" | "description" | "type_code" | "image_url" | "github_url" | "figma_url" | "project_url" | "other_url" | "problem" | "solution" | "result" | "created_at" | "is_starred", ExtArgs["result"]["projects"]>
+export type projectsOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "title" | "description" | "type_code" | "image_url" | "github_url" | "figma_url" | "project_url" | "other_url" | "problem" | "solution" | "result" | "created_at" | "is_starred" | "year", ExtArgs["result"]["projects"]>
 export type projectsInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   design_process?: boolean | Prisma.projects$design_processArgs<ExtArgs>
   project_responsibilities?: boolean | Prisma.projects$project_responsibilitiesArgs<ExtArgs>
@@ -1225,6 +1322,7 @@ export type $projectsPayload<ExtArgs extends runtime.Types.Extensions.InternalAr
     result: string | null
     created_at: Date
     is_starred: boolean
+    year: number
   }, ExtArgs["result"]["projects"]>
   composites: {}
 }
@@ -1666,6 +1764,7 @@ export interface projectsFieldRefs {
   readonly result: Prisma.FieldRef<"projects", 'String'>
   readonly created_at: Prisma.FieldRef<"projects", 'DateTime'>
   readonly is_starred: Prisma.FieldRef<"projects", 'Boolean'>
+  readonly year: Prisma.FieldRef<"projects", 'Int'>
 }
     
 

@@ -17,6 +17,7 @@ export function toProjectDTO(project: any): ProjectDTO {
         result: project.result,
         isStarred: project.is_starred,
         createdAt: project.created_at,
+        year: project.year,
         techStacks: project.tech_stacks.map(
             (ts: { id: string; name: string }) => ({
                 id: ts.id,

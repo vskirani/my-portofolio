@@ -31,3 +31,7 @@ export async function findProjectByIDRepo(id: string) {
         },
     });
 }
+
+export async function countProjectsRepo() {
+    return await prisma.projects.count();
+}

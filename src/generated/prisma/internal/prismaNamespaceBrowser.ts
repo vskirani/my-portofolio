@@ -121,7 +121,8 @@ export const ProjectsScalarFieldEnum = {
   solution: 'solution',
   result: 'result',
   created_at: 'created_at',
-  is_starred: 'is_starred'
+  is_starred: 'is_starred',
+  year: 'year'
 } as const
 
 export type ProjectsScalarFieldEnum = (typeof ProjectsScalarFieldEnum)[keyof typeof ProjectsScalarFieldEnum]
