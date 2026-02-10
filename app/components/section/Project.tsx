@@ -54,7 +54,7 @@ export default async function Projects() {
                             href={`/project/${project.id}`}
                             className="group block"
                         >
-                            <article className="h-full bg-[#fdf2f8] border border-pink-100 rounded-2xl overflow-hidden hover:shadow-lg hover:border-pink-200 transition-all">
+                            <article className="h-96 flex flex-col bg-[#fdf2f8] border border-pink-100 rounded-2xl overflow-hidden hover:shadow-lg hover:border-pink-200 transition-all">
                                 {/* Project Image */}
                                 <div className="relative h-48 overflow-hidden bg-pink-50">
                                     <img
@@ -87,24 +87,31 @@ export default async function Projects() {
                                 </div>
 
                                 {/* Content */}
-                                <div className="p-5 bg-white">
+                                <div className="p-5 bg-white flex flex-col flex-1">
                                     <h3 className="text-base font-medium text-gray-800 mb-2 group-hover:text-[#ec4899] transition-colors">
                                         {project.title}
                                     </h3>
-                                    <p className="text-sm text-gray-500 mb-4 line-clamp-2">
+                                    <p className="text-sm text-gray-500 mb-4 line-clamp-2 flex-1">
                                         {project.description}
                                     </p>
 
                                     {/* Tags */}
-                                    <div className="flex flex-wrap gap-2">
-                                        {project.techStacks.map((techStack) => (
-                                            <span
-                                                key={techStack.id}
-                                                className="px-2.5 py-1 text-xs text-gray-500 bg-pink-50 border border-pink-100 rounded-full"
-                                            >
-                                                {techStack.name}
+                                    <div className="flex flex-wrap gap-2 mt-auto">
+                                        {project.techStacks
+                                            .slice(0, 3)
+                                            .map((techStack) => (
+                                                <span
+                                                    key={techStack.id}
+                                                    className="px-2.5 py-1 text-xs text-gray-500 bg-pink-50 border border-pink-100 rounded-full"
+                                                >
+                                                    {techStack.name}
+                                                </span>
+                                            ))}
+                                        {project.techStacks.length > 3 && (
+                                            <span className="px-2.5 py-1 text-xs text-[#ec4899] bg-pink-100 border border-pink-200 rounded-full font-medium">
+                                                +{project.techStacks.length - 3} more
                                             </span>
-                                        ))}
+                                        )}
                                     </div>
                                 </div>
                             </article>
