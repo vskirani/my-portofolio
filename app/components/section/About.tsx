@@ -1,39 +1,10 @@
-"use client"
-
-import { useState, useEffect } from 'react';
+import RoleTyping from './RoleTyping';
 import CircularGallery from './CircularGallery';
+import { countProjectsService } from '@/src/services/project.service';
 
-export default function About() {
-    const roles = ['Frontend Developer', 'UI/UX Designer'];
-    const [currentRoleIndex, setCurrentRoleIndex] = useState(0);
-    const [displayText, setDisplayText] = useState('');
-    const [isDeleting, setIsDeleting] = useState(false);
-
-    useEffect(() => {
-        const currentRole = roles[currentRoleIndex];
-
-        const timeout = setTimeout(() => {
-            if (!isDeleting) {
-                // Typing
-                if (displayText.length < currentRole.length) {
-                    setDisplayText(currentRole.slice(0, displayText.length + 1));
-                } else {
-                    // Wait before deleting
-                    setTimeout(() => setIsDeleting(true), 2000);
-                }
-            } else {
-                // Deleting
-                if (displayText.length > 0) {
-                    setDisplayText(displayText.slice(0, -1));
-                } else {
-                    setIsDeleting(false);
-                    setCurrentRoleIndex((prev) => (prev + 1) % roles.length);
-                }
-            }
-        }, isDeleting ? 50 : 100);
-
-        return () => clearTimeout(timeout);
-    }, [displayText, isDeleting, currentRoleIndex]);
+export default async function About() {
+    const res = await countProjectsService();
+    const projectCount = res.data || 0;
 
     return (
         <section id="about" className="py-20 lg:py-32 bg-white">
@@ -69,11 +40,7 @@ export default function About() {
                     {/* Content (Mobile)*/}
                     <div className="space-y-6 order-2">
                         <h2 className="text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight leading-tight text-gray-800">
-                            I'm a{' '}
-                            <span className="text-[#ec4899]">
-                                {displayText}
-                                <span className="animate-pulse">|</span>
-                            </span>
+                            I'm a <RoleTyping />
                             <br />
                             <span className="text-gray-600">Designing interfaces, developing experiences</span>
                         </h2>
@@ -132,7 +99,7 @@ export default function About() {
                                 <p className="text-xs text-gray-500 mt-1">Years Exp.</p>
                             </div>
                             <div className="bg-pink-50 border border-pink-100 rounded-2xl p-4 text-center">
-                                <p className="text-2xl font-semibold text-gray-800">15+</p>
+                                <p className="text-2xl font-semibold text-gray-800">{projectCount}+</p>
                                 <p className="text-xs text-gray-500 mt-1">Projects</p>
                             </div>
                             <div className="bg-pink-50 border border-pink-100 rounded-2xl p-4 text-center">

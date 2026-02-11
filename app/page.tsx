@@ -6,14 +6,14 @@ import Skill from "./components/section/Skill";
 import Contact from "./components/section/Contact";
 
 export default function Home() {
-  return (
-    <div>
-      <Hero />
-      <About />
-      <Projects />
-      <Certificate />
-      <Skill />
-      <Contact />
-    </div>
-  );
+    return (
+        <div>
+            <Hero />
+            <About />
+            <Projects />
+            <Certificate />
+            <Skill />
+            <Contact />
+        </div>
+    );
 }

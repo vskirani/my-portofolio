@@ -2,8 +2,13 @@ import Link from "next/link";
 import { getListProjectsService } from "@/src/services/project.service";
 
 export default async function Projects() {
-    const res = await getListProjectsService();
+    const res = await getListProjectsService({
+        isStarred: true,
+        limit: 3,
+    });
     const projects = res.data;
+
+
 
 
     return (
