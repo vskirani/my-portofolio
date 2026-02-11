@@ -74,10 +74,10 @@ export default async function ProjectsPage() {
                                             {project.projectType.name}
                                         </span>
 
-                                        {/* Number
-                                        <span className="absolute bottom-4 left-4 text-xs text-white font-mono bg-black/40 px-2 py-1 rounded-md backdrop-blur-sm">
-                                            0{index + 1}
-                                        </span> */}
+                                        {/* Year */}
+                                        <span className="absolute top-4 left-4 text-xs text-white font-mono bg-black/40 px-2 py-1 rounded-md backdrop-blur-sm">
+                                            {project.year}
+                                        </span>
 
                                         {/* Arrow */}
                                         <div className="absolute top-4 right-4 w-9 h-9 rounded-full bg-white border border-pink-100 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 group-hover:-translate-y-1 shadow-md">
