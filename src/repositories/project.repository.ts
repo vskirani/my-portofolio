@@ -13,7 +13,7 @@ export async function findProjectsRepo(filter?: FindProjectsFilter) {
     return await prisma.projects.findMany({
         where,
         take: filter?.limit,
-        orderBy: { created_at: "desc" },
+        orderBy: { year: "desc" },
         include: {
             tech_stacks: true,
             project_types: true,
