@@ -13,7 +13,7 @@ export default function Home() {
             <Projects />
             <Certificate />
             <Skill />
-            <Contact />
+
         </div>
     );
 }
