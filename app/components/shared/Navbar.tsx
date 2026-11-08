@@ -57,9 +57,9 @@ export default function Navbar() {
                     }`}
             >
                 {/* Logo */}
-                <a href="/" className="text-lg text-gray-800 font-medium tracking-tight">
+                <Link href="/" className="text-lg text-gray-800 font-medium tracking-tight">
                     Kirani<span className="text-[#ec4899]">.</span>
-                </a>
+                </Link>
 
                 {/* Mobile Toggle */}
                 <button

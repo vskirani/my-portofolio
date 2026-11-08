@@ -1,0 +1,22 @@
+.git
+.gitignore
+.github
+.vercel
+
+# Dependencies and build output are recreated inside the image.
+node_modules
+.next
+out
+build
+coverage
+
+# Never bake local env files or secrets into the image.
+.env
+.env.*
+*.pem
+
+# Local tooling and generated reports.
+.DS_Store
+*.md
+*.tsbuildinfo
+npm-debug.log*

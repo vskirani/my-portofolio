@@ -3,6 +3,8 @@ import ListProject from "../components/section/ListProject";
 import { Suspense } from "react";
 import FilterButtons from "../components/section/FilterButtons";
 
+export const dynamic = "force-dynamic";
+
 interface ProjectsPageProps {
     searchParams: Promise<{ category?: string }>;  // <-- tipe-nya Promise
 }

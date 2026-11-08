@@ -56,7 +56,7 @@ export default function Contact() {
                             </div>
 
                             <h2 className="text-3xl sm:text-4xl font-semibold tracking-tight text-gray-800">
-                                Let's Build Something Great
+                                Let&apos;s Build Something Great
                             </h2>
                             <p className="text-gray-500 mt-3">
                                 Aku membantu membuat tampilan yang cantik, fungsional, dan nyaman digunakan.

@@ -2,6 +2,8 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getProjectByIDService } from "@/src/services/project.service";
 
+export const dynamic = "force-dynamic";
+
 interface PageProps {
     params: Promise<{ id: string }>;
 }
