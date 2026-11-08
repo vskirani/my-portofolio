@@ -30,7 +30,7 @@ export default async function Projects() {
                             Featured Work
                         </h2>
                     </div>
-                    <a
+                    <Link
                         href="/project"
                         className="text-sm text-gray-400 hover:text-[#ec4899] transition-colors flex items-center gap-2 group"
                     >
@@ -48,7 +48,7 @@ export default async function Projects() {
                                 d="M17 8l4 4m0 0l-4 4m4-4H3"
                             />
                         </svg>
-                    </a>
+                    </Link>
                 </div>
 
                 {/* Projects Grid */}
@@ -138,7 +138,7 @@ export default async function Projects() {
                         href="#contact"
                         className="inline-flex items-center justify-center gap-2 px-6 py-3 text-sm font-medium border border-pink-200 text-gray-700 rounded-full hover:border-[#ec4899] hover:text-[#ec4899] transition-colors bg-white"
                     >
-                        Let's Talk
+                        Let&apos;s Talk
                         <svg
                             className="w-4 h-4"
                             fill="none"

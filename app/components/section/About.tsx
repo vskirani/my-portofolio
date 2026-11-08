@@ -40,7 +40,7 @@ export default async function About() {
                     {/* Content (Mobile)*/}
                     <div className="space-y-6 order-2">
                         <h2 className="text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight leading-tight text-gray-800">
-                            I'm a <RoleTyping />
+                            I&apos;m a <RoleTyping />
                             <br />
                             <span className="text-gray-600">Designing interfaces, developing experiences</span>
                         </h2>

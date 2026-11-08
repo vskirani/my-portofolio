@@ -29,8 +29,13 @@ To learn more about Next.js, take a look at the following resources:
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
+## Deploy
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Project ini di-deploy sebagai container Docker di VPS melalui GitHub Actions
+dan GHCR. Panduan lengkap (secrets, compose VPS, database, rollback) ada di
+[DEPLOYMENT.md](./DEPLOYMENT.md).
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Alur singkat: push ke `main` -> CI (lint + build) -> image dipush ke GHCR ->
+Deploy SSH ke VPS -> `docker compose pull/up` -> smoke test `/api/health`.
+
+Deployment Vercel sudah tidak dipakai untuk project ini.
